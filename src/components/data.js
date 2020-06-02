@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, InputGroup, Button, FormControl } from 'react-bootstrap';
 
 const Data = () => {
@@ -12,9 +12,8 @@ const Data = () => {
 	const [ arrColor, setArrColor ] = useState([]);
 	const [ course, setCourse ] = useState('');
 	const [ color, setColor ] = useState('');
-	function courseCapture(e) {
-		const evento = e.target.value;
-		setCourse(evento);
+	function courseCapture({ target }) {
+		setCourse(target.value);
 	}
 
 	function colorCapture(e) {
@@ -23,12 +22,12 @@ const Data = () => {
 	}
 
 	function buttonEffect() {
-		setArrCourse(arrCourse.concat(course));
-		setArrColor(arrCourse.concat(color));
+		setArrCourse((arrCourse) => [ ...arrCourse, course ]);
+		setArrColor((arrColor) => [ ...arrColor, color ]);
 		console.log(arrCourse);
 	}
-	const visuaCourse = arrCourse.map((value, index) => <li key={index}>{value}</li>);
-	const visuaColor = arrColor.map((value, index) => <p key={index}>{value}</p>);
+	const Visuacourse = ({ course }) => <li>{course}</li>;
+	const Visuacolor = ({ color }) => <li>{color}</li>;
 	return (
 		<div>
 			<Card border="success" style={{ width: '20rem' }}>
@@ -51,9 +50,12 @@ const Data = () => {
 					<Button variant="primary" onClick={buttonEffect}>
 						Agregar
 					</Button>
-					<Card.Text style={{ color: color }}>
-						{course} {color}
-						{visuaCourse} {visuaColor}
+					<Card.Text>
+						<ul>
+							{arrCourse.map((course, i) => <Visuacourse course={course} key={course + i} />)}
+
+							{arrColor.map((color, i) => <Visuacolor color={color} key={color + i} />)}
+						</ul>
 					</Card.Text>
 				</Card.Body>
 			</Card>
