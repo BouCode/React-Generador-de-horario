@@ -25,9 +25,20 @@ const Data = () => {
 		setArrCourse((arrCourse) => [ ...arrCourse, course ]);
 		setArrColor((arrColor) => [ ...arrColor, color ]);
 		console.log(arrCourse);
+		console.log(arrColor);
 	}
-	const Visuacourse = ({ course }) => <li>{course}</li>;
-	const Visuacolor = ({ color }) => <li>{color}</li>;
+	// const VisuaCourse = ({ course }, { color }) => (
+	// 	<p>
+	// 		{course} {color}
+	// 	</p>
+	// );
+
+	const VisuaData = arrCourse.map((value, index) => (
+		<p key={index}>
+			{value} {arrColor[index]}
+		</p>
+	));
+	// const Visuacolor = ({ color }) => <p>{color}</p>;
 	return (
 		<div>
 			<Card border="success" style={{ width: '20rem' }}>
@@ -50,13 +61,11 @@ const Data = () => {
 					<Button variant="primary" onClick={buttonEffect}>
 						Agregar
 					</Button>
-					<Card.Text>
-						<ul>
-							{arrCourse.map((course, i) => <Visuacourse course={course} key={course + i} />)}
-
-							{arrColor.map((color, i) => <Visuacolor color={color} key={color + i} />)}
-						</ul>
-					</Card.Text>
+					<ul>
+						{/* {arrCourse.map((course, i) => <VisuaCourse course={course} color={color} key={course + i} />)} */}
+						{/* {arrColor.map((color, i) => <Visuacolor color={color} key={course} />)} */}
+						{VisuaData}
+					</ul>
 				</Card.Body>
 			</Card>
 		</div>
