@@ -20,6 +20,11 @@ export function SelectItem(event, text, course) {
 	}
 }
 
+function buttonDelete(event) {
+	event.target.textContent = '';
+	event.target.style.backgroundColor = '';
+}
+
 function zfill(number, width) {
 	var numberOutput = Math.abs(number);
 	var length = number.toString().length;
@@ -56,7 +61,7 @@ const Main = () => {
 	const listTime = arr.map((time, index) => (
 		<tr key={index}>
 			<td key={index}>{time}</td>
-			{days.map((day, ind) => <td key={ind} onClick={SelectItem} />)}
+			{days.map((day, ind) => <td key={ind} onClick={SelectItem} onDoubleClick={buttonDelete} />)}
 		</tr>
 	));
 	const listItem = days.map((day, index) => <th key={index}>{day}</th>);

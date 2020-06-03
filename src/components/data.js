@@ -36,7 +36,6 @@ const Data = () => {
 	}
 
 	function buttonDelete(event) {
-		console.log('Boton borrado');
 		const TextContent = event.target.textContent;
 		for (let i = 0; i < arrCourse.length; i++) {
 			if (arrCourse[i] === TextContent) {
@@ -97,7 +96,7 @@ const Data = () => {
 					</Button>
 					{/* <SelectItem value="Probando" /> */}
 
-					<ul style={{ padding: '0px' }}>{VisuaData}</ul>
+					<ul style={{ padding: '0px', marginTop: '10px' }}>{VisuaData}</ul>
 				</Card.Body>
 			</Card>
 		</div>
