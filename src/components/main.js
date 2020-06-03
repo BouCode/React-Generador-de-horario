@@ -7,9 +7,6 @@ export function SelectItem(event, text, course) {
 	if (text !== null && course !== null && event === '') {
 		arr.push(text);
 		col.push(course);
-		console.log(arr);
-		console.log(text);
-		console.log(course);
 	} else {
 		if (arr == null) {
 			return console.log(event.target.textContent);

@@ -24,8 +24,6 @@ const Data = () => {
 	function buttonAdd() {
 		setArrCourse((arrCourse) => [ ...arrCourse, course ]);
 		setArrColor((arrColor) => [ ...arrColor, color ]);
-		console.log(arrCourse);
-		console.log(arrColor);
 	}
 
 	function buttonCourse(event) {
@@ -37,9 +35,25 @@ const Data = () => {
 		SelectItem('', TextContent, ColorContent);
 	}
 
-	function buttonDelete() {
+	function buttonDelete(event) {
 		console.log('Boton borrado');
+		const TextContent = event.target.textContent;
+		for (let i = 0; i < arrCourse.length; i++) {
+			if (arrCourse[i] === TextContent) {
+				arrCourse.splice(i, 1);
+				arrColor.splice(i, 1);
+				console.log(arrColor);
+				console.log(arrCourse);
+				setArrCourse(arrCourse);
+				setArrColor(arrColor);
+				event.target.textContent = '';
+			}
+		}
+
+		// console.log(arrColor);
+		// console.log(arrCourse);
 	}
+
 	const VisuaData = arrCourse.map((value, index) => (
 		<button
 			key={index}
