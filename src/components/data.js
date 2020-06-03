@@ -47,7 +47,7 @@ const Data = () => {
 				background: `${arrColor[index]}`,
 				border: 'none',
 				color: 'white',
-				width: '120px',
+				width: 'auto',
 				borderRadius: '10px',
 				margin: '5px 5px 0px 0px',
 				cursor: 'pointer'

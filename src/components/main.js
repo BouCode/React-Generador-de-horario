@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Table, Container } from 'react-bootstrap';
 
 const arr = [];
@@ -59,11 +59,7 @@ const Main = () => {
 	const listTime = arr.map((time, index) => (
 		<tr key={index}>
 			<td key={index}>{time}</td>
-			{days.map((day, ind) => (
-				<td key={ind} onClick={SelectItem}>
-					{day} {ind}
-				</td>
-			))}
+			{days.map((day, ind) => <td key={ind} onClick={SelectItem} />)}
 		</tr>
 	));
 	const listItem = days.map((day, index) => <th key={index}>{day}</th>);
@@ -71,10 +67,10 @@ const Main = () => {
 	return (
 		<div>
 			<Container>
-				<Table bordered hover size responsive="sm">
+				<Table borderless striped hover responsive="sm" variant="dark" className="text-center" size="sm">
 					<thead>
 						<tr>
-							<th>Horario</th>
+							<th>Horas</th>
 							{listItem}
 						</tr>
 					</thead>
