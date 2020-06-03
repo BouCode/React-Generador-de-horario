@@ -61,7 +61,7 @@ const Data = () => {
 
 	return (
 		<div>
-			<Card border="success" style={{ width: '20rem' }}>
+			<Card bg="dark" text="white">
 				<Card.Header>Curso</Card.Header>
 				<Card.Body>
 					<Card.Title>Inserte su curso:</Card.Title>
