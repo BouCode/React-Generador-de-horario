@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, InputGroup, Button, FormControl } from 'react-bootstrap';
-
+import { SelectItem } from './main';
 const Data = () => {
 	const inputStyle = {
 		height: '100%',
@@ -8,8 +8,8 @@ const Data = () => {
 		padding: '0px'
 	};
 
-	const [ arrCourse, setArrCourse ] = useState([]);
-	const [ arrColor, setArrColor ] = useState([]);
+	const [ arrCourse, setArrCourse ] = useState([ 'Geometria', 'Trigonometria', 'Fisica' ]);
+	const [ arrColor, setArrColor ] = useState([ '#D89D6A', '#DD1C1A', '#06AED5' ]);
 	const [ course, setCourse ] = useState('');
 	const [ color, setColor ] = useState('');
 	function courseCapture({ target }) {
@@ -21,24 +21,44 @@ const Data = () => {
 		setColor(evento);
 	}
 
-	function buttonEffect() {
+	function buttonAdd() {
 		setArrCourse((arrCourse) => [ ...arrCourse, course ]);
 		setArrColor((arrColor) => [ ...arrColor, color ]);
 		console.log(arrCourse);
 		console.log(arrColor);
 	}
-	// const VisuaCourse = ({ course }, { color }) => (
-	// 	<p>
-	// 		{course} {color}
-	// 	</p>
-	// );
 
+	function buttonCourse(event) {
+		const target = event.target;
+		const TextContent = target.textContent;
+		const ColorContent = target.style.backgroundColor;
+		// console.log(TextContent);
+		// console.log(ColorContent);
+		SelectItem('', TextContent, ColorContent);
+	}
+
+	function buttonDelete() {
+		console.log('Boton borrado');
+	}
 	const VisuaData = arrCourse.map((value, index) => (
-		<p key={index}>
-			{value} {arrColor[index]}
-		</p>
+		<button
+			key={index}
+			style={{
+				background: `${arrColor[index]}`,
+				border: 'none',
+				color: 'white',
+				width: '120px',
+				borderRadius: '10px',
+				margin: '5px 5px 0px 0px',
+				cursor: 'pointer'
+			}}
+			onClick={buttonCourse}
+			onDoubleClick={buttonDelete}
+		>
+			{value}
+		</button>
 	));
-	// const Visuacolor = ({ color }) => <p>{color}</p>;
+
 	return (
 		<div>
 			<Card border="success" style={{ width: '20rem' }}>
@@ -58,14 +78,12 @@ const Data = () => {
 							</Button>
 						</InputGroup.Append>
 					</InputGroup>
-					<Button variant="primary" onClick={buttonEffect}>
+					<Button variant="primary" onClick={buttonAdd}>
 						Agregar
 					</Button>
-					<ul>
-						{/* {arrCourse.map((course, i) => <VisuaCourse course={course} color={color} key={course + i} />)} */}
-						{/* {arrColor.map((color, i) => <Visuacolor color={color} key={course} />)} */}
-						{VisuaData}
-					</ul>
+					{/* <SelectItem value="Probando" /> */}
+
+					<ul style={{ padding: '0px' }}>{VisuaData}</ul>
 				</Card.Body>
 			</Card>
 		</div>

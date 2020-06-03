@@ -1,5 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Container } from 'react-bootstrap';
+
+const arr = [];
+const col = [];
+export function SelectItem(event, text, course) {
+	if (text !== null && course !== null && event === '') {
+		arr.push(text);
+		col.push(course);
+		console.log(arr);
+		console.log(text);
+		console.log(course);
+	} else {
+		if (arr == null) {
+			return console.log(event.target.textContent);
+		}
+		arr.map((value, index) => {
+			event.target.textContent = arr[index];
+			event.target.style.backgroundColor = col[index];
+		});
+
+		console.log(event.target.textContent);
+	}
+}
+
+function zfill(number, width) {
+	var numberOutput = Math.abs(number);
+	var length = number.toString().length;
+	var zero = '0';
+
+	if (width <= length) {
+		if (number < 0) {
+			return '-' + numberOutput.toString();
+		} else {
+			return numberOutput.toString();
+		}
+	} else {
+		if (number < 0) {
+			return '-' + zero.repeat(width - length) + numberOutput.toString();
+		} else {
+			return zero.repeat(width - length) + numberOutput.toString();
+		}
+	}
+}
 
 const Main = () => {
 	const days = [ 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado' ];
@@ -12,35 +54,19 @@ const Main = () => {
 		}
 	};
 
-	const zfill = (number, width) => {
-		var numberOutput = Math.abs(number);
-		var length = number.toString().length;
-		var zero = '0';
-
-		if (width <= length) {
-			if (number < 0) {
-				return '-' + numberOutput.toString();
-			} else {
-				return numberOutput.toString();
-			}
-		} else {
-			if (number < 0) {
-				return '-' + zero.repeat(width - length) + numberOutput.toString();
-			} else {
-				return zero.repeat(width - length) + numberOutput.toString();
-			}
-		}
-	};
-
 	times();
 
 	const listTime = arr.map((time, index) => (
 		<tr key={index}>
 			<td key={index}>{time}</td>
-			{days.map((day, ind) => <td key={ind}>{day}</td>)}
+			{days.map((day, ind) => (
+				<td key={ind} onClick={SelectItem}>
+					{day} {ind}
+				</td>
+			))}
 		</tr>
 	));
-	const listItem = days.map((day) => <th key={day}>{day}</th>);
+	const listItem = days.map((day, index) => <th key={index}>{day}</th>);
 
 	return (
 		<div>
