@@ -8,8 +8,8 @@ const Data = () => {
 		padding: '0px'
 	};
 
-	const [ arrCourse, setArrCourse ] = useState([ 'Geometria', 'Trigonometria', 'Fisica' ]);
-	const [ arrColor, setArrColor ] = useState([ '#D89D6A', '#DD1C1A', '#06AED5' ]);
+	const [ arrCourse, setArrCourse ] = useState([ 'Cálculo IV', 'Electrónicos III', 'Física II', 'Receso' ]);
+	const [ arrColor, setArrColor ] = useState([ '#fb5607', '#ffbe0b', '#3a86ff', '#8338ec' ]);
 	const [ course, setCourse ] = useState('');
 	const [ color, setColor ] = useState('');
 	function courseCapture({ target }) {
@@ -30,8 +30,6 @@ const Data = () => {
 		const target = event.target;
 		const TextContent = target.textContent;
 		const ColorContent = target.style.backgroundColor;
-		// console.log(TextContent);
-		// console.log(ColorContent);
 		SelectItem('', TextContent, ColorContent);
 	}
 
@@ -41,8 +39,6 @@ const Data = () => {
 			if (arrCourse[i] === TextContent) {
 				arrCourse.splice(i, 1);
 				arrColor.splice(i, 1);
-				console.log(arrColor);
-				console.log(arrCourse);
 				setArrCourse(arrCourse);
 				setArrColor(arrColor);
 				event.target.textContent = '';
@@ -94,8 +90,6 @@ const Data = () => {
 					<Button variant="primary" onClick={buttonAdd}>
 						Agregar
 					</Button>
-					{/* <SelectItem value="Probando" /> */}
-
 					<ul style={{ padding: '0px', marginTop: '10px' }}>{VisuaData}</ul>
 				</Card.Body>
 			</Card>
