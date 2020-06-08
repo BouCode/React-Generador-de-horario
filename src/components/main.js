@@ -9,14 +9,11 @@ export function SelectItem(event, text, course) {
 		col.push(course);
 	} else {
 		if (arr == null) {
-			return console.log(event.target.textContent);
 		}
 		arr.map((value, index) => {
 			event.target.textContent = arr[index];
 			event.target.style.backgroundColor = col[index];
 		});
-
-		console.log(event.target.textContent);
 	}
 }
 

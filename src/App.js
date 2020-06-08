@@ -10,7 +10,7 @@ function App() {
 		<div>
 			<Header style={{ width: '100%' }} />
 
-			<Container fluid style={{ margin: '100px 0 0 100px' }}>
+			<Container fluid style={{ marginTop: '35px', padding: '0 auto' }}>
 				<Row>
 					<Col sm={3}>
 						<Data />
