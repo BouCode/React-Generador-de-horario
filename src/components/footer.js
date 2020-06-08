@@ -3,9 +3,9 @@ import { Navbar } from 'react-bootstrap';
 
 const Footer = () => {
 	return (
-		<div style={{ position: 'fixed', bottom: '0px', width: '100%' }}>
+		<div style={{ position: 'relative', bottom: '0px', width: '100%', paddingTop: '50px' }}>
 			<Navbar bg="dark" variant="dark">
-				<Navbar.Brand>©</Navbar.Brand>
+				<Navbar.Text className="center">©Derechos reservados 2020</Navbar.Text>
 			</Navbar>
 		</div>
 	);

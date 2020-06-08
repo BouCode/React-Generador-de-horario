@@ -49,7 +49,7 @@ const Main = () => {
 	const days = [ 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado' ];
 	const arr = [];
 	const times = () => {
-		for (let i = 6; i < 24; i++) {
+		for (let i = 0; i < 24; i++) {
 			for (let j = 0; j < 1; j++) {
 				arr.push([ `${zfill(i, 2)}:${zfill(j * 50, 2)} - ${zfill(i, 2)}:${zfill(j + 1 * 50, 2)}` ]);
 			}
